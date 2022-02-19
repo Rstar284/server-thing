@@ -10,8 +10,8 @@
 </script>
 
 <svelte:head>
-    <title>Images</title>
-	<meta name="description" content="Rstar's Image CDN">
+    <title>Fun</title>
+	<meta name="description" content="OwO What's Fun?">
 </svelte:head>
 
 <section>

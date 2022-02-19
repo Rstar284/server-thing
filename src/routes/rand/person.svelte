@@ -16,6 +16,11 @@
 
 </script>
 
+<svelte:head>
+    <title>Random - Person</title>
+    <meta name="description" content="Get a AI generated person!">
+</svelte:head>
+
 <main>
     <span>
         <img src="{pic}" alt="{name}">
