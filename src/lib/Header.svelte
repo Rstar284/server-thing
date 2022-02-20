@@ -6,22 +6,18 @@
 	<div class="corner">
 	</div>
 
-	<nav>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L1,2 C1.5,3 1.5,3 2,3 L2,0 Z" />
-		</svg>
-		<ul>
-			<li class:active={$page.url.pathname === '/'}><a sveltekit:prefetch href="/">Home</a></li>
-			<li class:active="{$page.url.pathname.startsWith('/fun')}">
-				<a sveltekit:prefetch href="/fun">Fun</a>
-			</li>
-			<li class:active="{$page.url.pathname.startsWith("/rand")}">
-				<a sveltekit:prefetch href="/rand	">Random</a>
-			</li>
-		</ul>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
-		</svg>
+        <nav> 
+            <ul> 
+                    <li class:active={$page.url.pathname === '/'}>
+                        <a sveltekit:prefetch href="/">Home</a>
+                    </li>
+                    <li class:active="{$page.url.pathname.startsWith('/fun')}">
+			    <a sveltekit:prefetch href="/fun">Fun</a>
+		    </li>
+		    <li class:active="{$page.url.pathname.startsWith("/rand")}">
+			    <a sveltekit:prefetch href="/rand">Rand</a>
+		    </li>
+		</ul>	
 	</nav>
 
 	<div class="corner">
@@ -42,30 +38,22 @@
 	nav {
 		display: flex;
 		justify-content: center;
-		--background: rgba(61, 61, 61, 0.7);
-	}
-
-	svg {
-		width: 2em;
-		height: 3em;
-		display: block;
-	}
-
-	path {
-		fill: var(--background);
+                --background: rgba(61, 61, 61, 0.7); 
+                padding-top: 0.5rem;
 	}
 
 	ul {
 		position: relative;
-		padding: 0;
+                padding: 0;
 		margin: 0;
-		height: 3em;
+		height: 3rem;
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		list-style: none;
 		background: var(--background);
-		background-size: contain;
+                background-size: contain;
+                border-radius: 1.5rem;
 	}
 
 	li {
@@ -74,7 +62,7 @@
 	}
 
 	li.active::before {
-		--size: 6px;
+		--size: 0.35rem;
 		content: '';
 		width: 0;
 		height: 0;
@@ -96,10 +84,10 @@
 		text-transform: uppercase;
 		letter-spacing: 0.1em;
 		text-decoration: none;
-		transition: color 0.2s linear;
+                transition: color 0.2s linear; 
 	}
 
 	a:hover {
 		color: var(--accent-color);
-	}
+        }
 </style>

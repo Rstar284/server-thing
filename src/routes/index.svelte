@@ -7,7 +7,8 @@
 </script>
 
 <svelte:head>
-	<title>Home</title>
+    <title>Home</title>
+    <meta name="description" content="Rstar's Server's Home Page!">
 </svelte:head>
 
 <section>

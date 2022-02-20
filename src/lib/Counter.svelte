@@ -3,7 +3,7 @@
 
 	import { spring } from 'svelte/motion';
 
-	export let count = 0;
+	export let count: number = 0;
 
 	browser ? (window.localStorage.getItem('count') ? count = Number(localStorage.getItem('count')) : count = 0) : count = 0;
 
@@ -17,11 +17,26 @@
 	function modulo(n: number, m: number) {
 		// handle negative numbers
 		return ((n % m) + m) % m;
-	}
+        }
+
+        if(browser) {
+            document.addEventListener('keypress', (e) => {
+               e = window.event || e
+                switch (e.key) {
+                    case "+":
+                    case "=":
+                        count += 1
+                        break
+                    case "-":
+                        count -= 1
+                        break
+                }
+            })
+        }
 </script>
 
 <div class="counter">
-	<button on:click={() => (count -= 1)} aria-label="Decrease the counter by one">
+	<button on:click={() => (count -= 1)} aria-label="Decrease the counter by one" id="minus">
 		<svg aria-hidden="true" viewBox="0 0 1 1">
 			<path d="M0,0.5 L1,0.5" />
 		</svg>
@@ -34,19 +49,23 @@
 		</div>
 	</div>
 
-	<button on:click={() => (count += 1)} aria-label="Increase the counter by one">
+	<button on:click={() => (count += 1)} aria-label="Increase the counter by one" id="plus">
 		<svg aria-hidden="true" viewBox="0 0 1 1">
 			<path d="M0,0.5 L1,0.5 M0.5,0 L0.5,1" />
 		</svg>
-	</button>
+        </button>
 </div>
+
+<h2>You can also press + and - to use the counter</h2>
 
 <style>
 	.counter {
 		display: flex;
 		border-top: 1px solid rgba(0, 0, 0, 0.1);
 		border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-		margin: 1rem 0;
+		margin: 0.5rem 0;
+                width: 100%;
+                padding-bottom: 3rem;
 	}
 
 	.counter button {
@@ -77,8 +96,8 @@
 	}
 
 	.counter-viewport {
-		width: 8em;
-		height: 4em;
+		width: 100%;
+		height: 5rem;
 		overflow: hidden;
 		text-align: center;
 		position: relative;
@@ -99,7 +118,7 @@
 	.counter-digits {
 		position: absolute;
 		width: 100%;
-		height: 100%;
+                height: 100%;
 	}
 
 	.hidden {
