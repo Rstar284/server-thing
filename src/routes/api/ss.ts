@@ -2,12 +2,14 @@ import puppeteer from 'puppeteer';
 
 let browser;
 
-try {
-    browser = await puppeteer.launch();
-} catch (e) {
-  console.log(e);
-  process.exit(1);
-}
+(async () => {
+    try {
+        browser = await puppeteer.launch();
+    } catch (e) {
+    console.log(e);
+      process.exit(1);
+    }
+})();
 
 export async function get({url}) {
     const site = url.searchParams.get("url")
